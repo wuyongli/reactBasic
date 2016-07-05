@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <div id="mydemo"></div>
+    <script type="text/babel">
+
+      var data1 = 123;
+      var data2="abc";
+
+      var MyTitle = React.createClass({
+        propTypes: {
+          title: React.PropTypes.string.isRequired,  //title属性是必须的，为string型
+          title2:React.PropTypes.number,             //title2为number型，不是必须的
+          
+        },
+        
+
+        render: function() {
+          return <h1> {this.props.title}<br/>{this.props.title2}</h1>;
+        }
+      });
+
+      ReactDOM.render(
+        <MyTitle title={data2} title2={data1}/>,
+        document.getElementById('example')
+      );
+
+      var MyDemo=React.createClass({
+        getDefaultProps:function(){
+          return{
+            title3:"用来设置默认值"
+          } ;
+        },
+        render:function(){
+          return <h1>{this.props.title3+'---'+this.props.title4}</h1>;   
+        {/*在<MyDemo>中添加了  title3="在这里设置了，替换了默认值"  则不使用默认值*/}
+        }
+      });
+
+      ReactDOM.render(
+        <MyDemo title3="在这里添加了title3，替换了默认值" title4="测试组件属性的默认值"/>,
+        document.getElementById('mydemo')
+      );
+    </script>
+  </body>
+</html>
+

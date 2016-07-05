@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>         <!-- React核心库 -->
+    <script src="../build/react-dom.js"></script>     <!--  提供DOM相关功能 -->
+    <script src="../build/browser.min.js"></script>   <!-- 将JSX语法转化为JavaScript语法 -->
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      var names = ['Alice', 'Emily', 'Kate'];
+      // html语言直接写在JavaScript中，不需要引号，允许html和JavaScript混写
+      ReactDOM.render(
+        <div>
+        {
+          names.map(function (name) {
+            return <div>Hello, {name}!</div>
+          })
+        }
+        </div>,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>

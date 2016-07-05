@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+var MyComponent = React.createClass({
+  handleClick: function() {
+    /*组件为虚拟DOM，插入文档中后才变为真实的DOM，为了从组件获得真实的DOM节点，
+    使用ref属性，this.refs.myTextInput指ref属性为‘myTextInput’的真实DOM节点。
+    但要保证DOM节点是真实的，即虚拟DOM插入文档以后，才能使用this.refs.myTextInput，
+    所以使用一个click事件的回调函数，保证DOM发生click事件后，才会使用this.refs.myTextInput
+    */
+    this.refs.myTextInput.focus();
+  },
+  render: function() {
+    return (
+      <div>
+        <input id="text" type="text" ref="myTextInput" />
+        <input type="button" value="Focus the text input" onClick={this.handleClick} />
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+  <MyComponent />,
+  document.getElementById('example')
+);
+    </script>
+
+
+  </body>
+</html>

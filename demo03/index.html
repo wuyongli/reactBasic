@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+    /*React 的 JSX 使用大、小写的约定来区分本地组件的类和 HTML 标签。 */
+
+    /*渲染html标签*/
+      var arr = [
+        <h1 className="title">Hello world!</h1>,   //渲染出为<h1 class="title">Hello world!</h1>
+        <h2>React is awesome</h2>,
+      ];
+      ReactDOM.render(
+        <div>{arr}</div>,
+        document.getElementById('example')
+      );
+
+
+
+    // 注意:
+
+    // 由于 JSX 就是 JavaScript，一些标识符像 class 和 for 不建议作为 XML 属性名，class和for为JavaScript的保留字。作为替代，React DOM 使用 className 和 htmlFor 来做对应的属性。
+
+    </script>
+
+  </body>
+</html>

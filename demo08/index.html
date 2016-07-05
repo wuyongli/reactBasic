@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <!-- 
+      React将组件看成一个状态机，有一个初始状态，跟用户互动（鼠标事件，输入事件等）后状态发生变化
+     -->
+    <script type="text/babel">
+var LikeButton = React.createClass({
+  getInitialState: function() {     //定义初始状态
+    return {liked: false};        //即this.state.liked
+  },
+  doClick: function(event) {
+    this.setState({liked: !this.state.liked});   //修改this.state.liked
+  },
+  render: function() {
+    var text = this.state.liked ? 'like' : 'haven\'t liked';   //三木运算
+    return (
+      <p onClick={this.doClick}>
+        You {text} this. Click to toggle.
+      </p>
+    );
+  }
+});
+
+ReactDOM.render(
+  <LikeButton />,   
+  document.getElementById('example')
+);
+    </script>
+  </body>
+</html>
+

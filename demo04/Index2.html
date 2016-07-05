@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>复合组件</title>
+    <meta charset='utf-8'>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+    /*渲染react组件*/
+      var HelloMessage = React.createClass({
+        render: function() {
+          return  <div>                                 {/*注意这里，只能有一个顶层标签*/}
+                    <Name name={this.props.name}></Name>
+                    <Message message={this.props.message}></Message>
+                  </div>  ;
+        }
+      });
+
+      var Name=React.createClass({
+        render:function(){
+          return <h1>{this.props.name}</h1>;
+        }
+      });
+
+      var Message=React.createClass({
+        render:function(){
+          return <h2>{this.props.message}</h2>
+        }
+      });
+
+      ReactDOM.render(
+        <HelloMessage name="John" message="the best for you"/>,
+        document.getElementById('example')
+      );
+
+
+    </script>
+  </body>
+</html>
